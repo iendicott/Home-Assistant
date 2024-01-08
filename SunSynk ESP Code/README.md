@@ -30,7 +30,7 @@ USB power supply and suitable enclosure.
 
 The 8kW inverter uses a combined BMS 2in1 Port located below.
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/91324677-d395-4286-b9b7-e1a9dc8699b6)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/8kw.png)
 
 ## 5.5kW with Separate CAN & RS485 Ports.
 
@@ -41,34 +41,34 @@ Pin1 = Orange/White = (A)
 Pin7 = Brown/White = (B)
 
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/fee9901a-87c0-4516-ad39-8ca6d112aaee)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/5.5%20inverter.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/6c15d0b7-b05d-4d2e-a625-35e3ad27b5b8)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/RS485%20Pins.png)
 
 
 ## Inverter Settings.
 
 Under the Advance Tab ensure the following settings are set.
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/4641d8dc-8c1d-43dc-8bd5-9fc7c54d045b)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/Inverter%20Settings.png)
 
 ## Home Assistant Sensors.
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/4e40d330-c75b-4e63-85e4-fb7a0d046c6a)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS1.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/0908f798-dca5-463e-8943-8493e75a6e39)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS2.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/f9592d58-171e-40f5-b8e7-29be796c736c)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS3.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/5c232b77-ab9a-44dc-9515-f1f7ecec5444)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS4.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/defb8fb8-c872-4492-8885-efc5e764e6a8)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS5.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/1232b788-0735-48ec-b512-598f9044d842)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS6.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/482d19ca-f02a-4635-a1be-2d37faf92526)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS7.png)
 
-![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/0321d98f-12a8-40d4-a2b0-d4031d7213e6)
+![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS8.png)
 
 
 
