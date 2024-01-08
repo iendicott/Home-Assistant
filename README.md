@@ -1,2 +1,3 @@
 # Home-Assistant
-Home Assistant Addons
+A repo for various Home Assistant addons.
+
