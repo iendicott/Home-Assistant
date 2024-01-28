@@ -89,7 +89,7 @@ captive_portal:
 sensor:
   - platform: dht
     model: DHT22
-    pin: GPIO23
+    pin: GPIO4
     temperature:
       name: "Temperature"
     humidity:
@@ -105,3 +105,6 @@ I then printed out this rather good ESP32 holder from Thingiverse, this give you
 
 Files here
 
+https://github.com/iendicott/Home-Assistant/blob/main/Temperature%20Sensor/dhtCaseTopSolderVented.stl
+
+https://github.com/iendicott/Home-Assistant/blob/main/Temperature%20Sensor/dhtcasebott.stl
