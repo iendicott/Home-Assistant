@@ -22,6 +22,8 @@ https://www.amazon.co.uk/gp/product/B071JR9WS9/ref=ppx_yo_dt_b_asin_title_o03_s0
 
 From the Magnetic Reed Switch one connection (does matter which one) connects to the GPIO4 and the other to the CMD pin.
 
+![Wiring Diagram](Wiring.jpg)
+
 Then in Home Assistant you will need to add the following code: 
 
 ## Make sure you update any secret references with your own parameters otherwise the code will not work!
