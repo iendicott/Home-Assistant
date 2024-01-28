@@ -79,5 +79,6 @@ Once you have built the product you'll need to install ESP Home on your Home Ass
 https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/ESP%20Inverter.yaml
 
 ## Disclaimer.
-The project is something I have developed and researched myself. I cannot accept any responsibility for any damage caused to your equipment. Please install at your own risk.
+
+I cannot accept any responsibility for any damage caused to your equipment. Please install at your own risk.
 
