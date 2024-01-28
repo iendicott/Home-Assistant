@@ -41,15 +41,15 @@ You should in this case use these pins and coloured cables
 ![Alt text](standard.jpg)
 
 If you have the battery and RS485 linking to the same port you maye need to provide a splitter.
-Not all splitter ae the same. In this version you can see it's crossed over.
+## Not all splitter are equal. 
+
+In this version you can see it's crossed over, this will NOT work.
 
 ![Cross over splitter](<no good.png>)
 
 You will need one like this https://solar-assistant.io/shop/products/deye_rj45_split
 
 ![Alt text](<Good splitter.png>)
-
-![Alt text](<Screenshot 2024-01-28 134755.png>)
 
 ## Important Note : 5.5kW with Separate CAN & RS485 Ports.
 
