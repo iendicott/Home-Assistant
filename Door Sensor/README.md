@@ -110,7 +110,7 @@ Google TTS Node
 
 ![Google TTS Node](<Google TTS node.png>)
 
-I then printed out this rather good ESP32 holder from Thingyverse, this give you the ability to plug in a Micro USB connector and feed in the Magnetic Reed Switch wires.
+I then printed out this rather good ESP32 holder from Thingiverse, this give you the ability to plug in a Micro USB connector and feed in the Magnetic Reed Switch wires.
 
 ![Alt text](case_2-1.PNG)
 
