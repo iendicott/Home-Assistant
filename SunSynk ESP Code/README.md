@@ -70,7 +70,7 @@ Under the Advance Tab ensure the following settings are set.
 
 ![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/SS8.png)
 
-Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to you ESP device 
+Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to your ESP device 
 https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/ESP%20Inverter.yaml
 
 ## Disclaimer.
