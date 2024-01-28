@@ -117,5 +117,7 @@ I then printed out this rather good ESP32 holder from Thingyverse, this give you
 Files here
 
 https://github.com/iendicott/Home-Assistant/blob/main/Door%20Sensor/top.stl
+
 https://github.com/iendicott/Home-Assistant/blob/main/Door%20Sensor/pin.stl
+
 https://github.com/iendicott/Home-Assistant/blob/main/Door%20Sensor/bottom.stl
