@@ -93,3 +93,26 @@ binary_sensor:
   disabled_by_default: false
 
 ```
+
+You can then setup a simple node red flow to alert when the door is open or closed.
+
+![All Nodes](allnodes.png)
+
+State Node
+
+![State Node](Statnode.png)
+
+Limit Node
+
+![Limit Node](limitednode.png)
+
+Google TTS Node
+
+![Google TTS Node](<Google TTS node.png>)
+
+I then printed out this rather good ESP32 holder from Thingyverse, this give you the ability to plug in a Micro USB connector and feed in the Magnetic Reed Switch wires.
+
+![ESP Case](case_2.PNG)
+
+File here
+
