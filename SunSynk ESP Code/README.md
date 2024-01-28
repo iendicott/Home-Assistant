@@ -1,13 +1,12 @@
 # SunSynk-ESPHome
 
-ESPHome Project to establish communication with SunSynk 8.8kW & 5.5kW Inverter via RS485 Modbus.
-The code is based on Modbus registers from SunSynk.
+This project has been created to allow you to gain back control over your SunSynk Inverter. This applies to 3.68kW / 5.5kW and 8.8kW inverters.
+Please not though, there are different versions of the inverter that have different ports and pin outs so you will need to check you own one.
 
 
 ## Components.
 
 WEMOS ESP32 Lite V1.0.0 Lolin32 Wifi Bluetooth Board CH340G MicroPython.
-
 
 ![ESP32 Lite](ESPLite.png)
 
@@ -21,6 +20,10 @@ https://kunkune.co.uk/shop/communication-boards/rs485-module-to-ttl-with-isolati
 
 USB power supply and suitable enclosure.
 
+I also created a 3D printed box which can be downloaded from here https://www.thingiverse.com/thing:6456451
+
+![Alt text](<Screenshot 2024-01-28 133913.png>)
+
 ## Connections.
 
 ![Wiring](Wiring.png)
@@ -33,7 +36,7 @@ The 8kW inverter uses a combined BMS 2in1 Port located below.
 
 ![8kW Inverter](8kw.png)
 
-## 5.5kW with Separate CAN & RS485 Ports.
+## Important Note : 5.5kW with Separate CAN & RS485 Ports.
 
 Use Pins 1 & 7 as pin2 isn’t connected on the PCB
 
