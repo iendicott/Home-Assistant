@@ -8,7 +8,7 @@ The code is based on Modbus registers from SunSynk.
 
 WEMOS ESP32 Lite V1.0.0 Lolin32 Wifi Bluetooth Board CH340G MicroPython.
 
- ![image](https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/ESPLite.png)
+![Alt text](ESPLite-1.png)
 
 https://kunkune.co.uk/shop/esp32-esp8266/wemos-lolin32-esp32-lite-v1-0-0-wifi-bluetooth-board-ch340g-micropython/?fbclid=IwAR130c3W75-MvHVIQRkaq919oVmQM71DfNW_I4CI16sr6qBjoB76vTmjVCs
 
