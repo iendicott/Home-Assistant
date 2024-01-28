@@ -36,6 +36,21 @@ The 8kW inverter uses a combined BMS 2in1 Port located below.
 
 ![8kW Inverter](8kw.png)
 
+You should in this case use these pins and coloured cables
+
+![Alt text](standard.jpg)
+
+If you have the battery and RS485 linking to the same port you maye need to provide a splitter.
+Not all splitter ae the same. In this version you can see it's crossed over.
+
+![Cross over splitter](<no good.png>)
+
+You will need one like this https://solar-assistant.io/shop/products/deye_rj45_split
+
+![Alt text](<Good splitter.png>)
+
+![Alt text](<Screenshot 2024-01-28 134755.png>)
+
 ## Important Note : 5.5kW with Separate CAN & RS485 Ports.
 
 Use Pins 1 & 7 as pin2 isn’t connected on the PCB
@@ -44,11 +59,13 @@ Pin1 = Orange/White = (A)
 
 Pin7 = Brown/White = (B)
 
-
 ![5.5 inverter](<5.5 inverter.png>)
 
 ![5.5 RS485 Pins](<RS485 Pins.png>)
 
+You should in this case use these pins and coloured cables
+
+![Alt text](alternative.jpg)
 
 ## Inverter Settings.
 
