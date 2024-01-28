@@ -24,7 +24,7 @@ From the Magnetic Reed Switch one connection (does matter which one) connects to
 
 Then in Home Assistant you will need to add the following code: 
 
-## Make sure you update any secret files with your parameters
+## Make sure you update any secret references with your own parameters otherwise the code will not work!
 
 ```
 substitutions:
