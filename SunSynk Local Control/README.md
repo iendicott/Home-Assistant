@@ -3,6 +3,7 @@
 This project has been created to allow you to gain back control over your SunSynk Inverter. This applies to 3.68kW / 5.5kW and 8.8kW inverters. (Other models may work)
 
 <br>
+
 **It should be noted, there are different versions of the each inverter. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter**
 
 ![8.8kW inverter](<8.8kW inverter.png>)
@@ -13,6 +14,7 @@ This project has been created to allow you to gain back control over your SunSyn
 
 <br>
 <br>
+
 ## Components required
 
 WEMOS ESP32 Lite V1.0.0 Lolin32 Wifi Bluetooth Board CH340G MicroPython.
