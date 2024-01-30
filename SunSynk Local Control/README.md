@@ -73,6 +73,31 @@ Under the Advance Tab ensure the following settings are set.
 
 ![Inverter Settings](<Inverter Settings.png>)
 
+## Flashing the ESP with the Code
+
+Load up the ESPHome Add-ons in Home Assistant.
+
+![Home Assistant ESPHome](ESPHome-HA.png)
+
+Click on the ESPHome item in the Home Assistant Side Bar
+Now click on **+ New Device**
+Click **Open ESPHome Web**
+Now plug your ESP device into your PC with a Data Micro USB cable then click **Connect**
+
+Your device should appear as a COM device, if not check this https://bromleysat.com/installing-drivers-for-the-esp32 for help
+You will then be prompted to install the ESP device. Following this through.
+
+Once install you will then need to Edit the ESP device in ESP home and then paste in the code https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/ESP%20Inverter.yaml
+
+You will need to replace add **!secret** into your Home Assistant config for the code to work.
+
+![Inverter Settings](<Inverter Settings.png>)
+
+## Connection
+
+Now plug the device via the RJ45 into the inverter and you should see data being displayed. 
+You will also have alot of new sensors in Home Assistant with the Prefix **sunsynk logger**
+
 ## Home Assistant Sensors.
 
 
