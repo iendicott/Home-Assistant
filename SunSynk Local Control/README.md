@@ -1,10 +1,16 @@
-# SunSynk-ESPHome
+# SunSynk Inverters and Home Assistant ESPHome
 
-This project has been created to allow you to gain back control over your SunSynk Inverter. This applies to 3.68kW / 5.5kW and 8.8kW inverters.
-Please not though, there are different versions of the inverter that have different ports and pin outs so you will need to check you own one.
+This project has been created to allow you to gain back control over your SunSynk Inverter. This applies to 3.68kW / 5.5kW and 8.8kW inverters. (Other models may work)
+It should be noted, there are different versions of the each inverter. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter
+
+![8.8kW inverter](<8.8kW inverter.png>)
+
+and some have seperate CAN and RS485 ports like this picture of a 5.5kW SunSynk Inverter
+
+![5.5KW inverter](<5.5KW inverter.png>)
 
 
-## Components.
+## Components required
 
 WEMOS ESP32 Lite V1.0.0 Lolin32 Wifi Bluetooth Board CH340G MicroPython.
 
@@ -24,59 +30,60 @@ I also created a 3D printed box which can be downloaded from here https://www.th
 
 ![Alt text](<Screenshot 2024-01-28 133913.png>)
 
-## Connections.
 
-![Wiring.png](Wiring.png)
-
-## 5.5kW & 8.5kW with combind BMS 2in1 Port.
-
-![Battery \ Can Connector](Connector.png)
-
-The 8kW inverter uses a combined BMS 2in1 Port located below.
+## For the SunSynk Inverters with an all in one BMS 485/CAN port
 
 ![8kW Inverter](8kw.png)
 
-You should in this case use these pins and coloured cables
+You should use these pins and coloured cables
 
-![Alt text](standard.jpg)
+![All In One](<All In One.jpg>)
 
-If you have the battery and RS485 linking to the same port you maye need to provide a splitter.
-## Not all splitters are equal. 
+They should be wired like this
+
+![Wiring](Wiring.png)
+
+You will also be required to splice the cable or purchase an RJ45 splitter* 
+The reason behind this is you will not only connect in the ESP32 but you will also need to connect in the existing battery BMS cable.
+Luckily the ESP use pins 1 & 2 and the BMS uses pins 4 & 5.
+
+![Alt text](<Pin Outs Combined.png>)
+
+## *Not all splitters are equal. 
 
 In this version you can see it's crossed over, this will NOT work.
 
-![Cross over splitter](<no good.png>)
+![Alt text](<No Good RJ45 Splitter.png>)
 
 You will need one like this https://solar-assistant.io/shop/products/deye_rj45_split
 
-![Alt text](<Good splitter.png>)
+![Good Splitter](<Good Splitter.png>)
 
-## Important Note : 5.5kW with Separate CAN & RS485 Ports.
 
-Use Pins 1 & 7 as pin2 isn’t connected on the PCB
 
-Pin1 = Orange/White = (A)
+## For the SunSynk Inverters with Separate CAN & RS485 Ports.
 
-Pin7 = Brown/White = (B)
+![Alt text](<5.5KW inverter.png>)
 
-![5.5 inverter](<5.5 inverter.png>)
+You should use these pins and coloured cables
 
-![5.5 RS485 Pins](<RS485 Pins.png>)
+![Seperate](Seperate.jpg)
 
-You should in this case use these pins and coloured cables
+They should be wired like this
 
-## Alternative Connections.
+![Alternative Wiring](<Alternative Wiring.png>)
 
-![Alternative RJ45](alternative.jpg)
 
-![Alternative wiring](<Alternative wiring.png>)
 
-## Inverter Settings.
+
+## Inverter Settings (This covers both types of inverter)
 
 Under the Advance Tab ensure the following settings are set.
 Your inverter will need to be rebooted as it will drop into error mode. Once done your inverter will be back to normal.
 
 ![inverter Settings](<Inverter Settings.png>)
+
+
 
 ## Flashing the ESP with the Code
 
