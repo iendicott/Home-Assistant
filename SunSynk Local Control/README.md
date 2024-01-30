@@ -42,6 +42,7 @@ I also created a 3D printed box which can be downloaded from here https://www.th
 <br>
 
 ## For the SunSynk Inverters with an all in one BMS 485/CAN port
+<br>
 
 ![8.8kW inverter](<8.8kW inverter.png>)
 
@@ -74,6 +75,7 @@ You will need one like this https://solar-assistant.io/shop/products/deye_rj45_s
 <br>
 
 ## For the SunSynk Inverters with Separate CAN & RS485 Ports.
+<br>
 
 ![5.5KW inverter](<5.5KW inverter.png>)
 
