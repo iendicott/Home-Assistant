@@ -43,7 +43,7 @@ I also created a 3D printed box which can be downloaded from here https://www.th
 
 ## For the SunSynk Inverters with an all in one BMS 485/CAN port
 
-![8kW Inverter](8kw.png)
+![8.8kW inverter](<8.8kW inverter.png>)
 
 You should use these pins and coloured cables
 
@@ -57,7 +57,7 @@ You will also be required to splice the cable or purchase an RJ45 splitter*
 The reason behind this is you will not only connect in the ESP32 but you will also need to connect in the existing battery BMS cable.
 Luckily the ESP use pins 1 & 2 and the BMS uses pins 4 & 5.
 
-![Alt text](<Pin Outs Combined.png>)
+![Pin Outs Combined](<Pin Outs Combined.png>)
 
 <br>
 
@@ -65,7 +65,7 @@ Luckily the ESP use pins 1 & 2 and the BMS uses pins 4 & 5.
 
 In this version you can see it's crossed over, this will NOT work.
 
-![Alt text](<No Good RJ45 Splitter.png>)
+![No Good RJ45 Splitter](<No Good RJ45 Splitter.png>)
 
 You will need one like this https://solar-assistant.io/shop/products/deye_rj45_split
 
@@ -75,7 +75,7 @@ You will need one like this https://solar-assistant.io/shop/products/deye_rj45_s
 
 ## For the SunSynk Inverters with Separate CAN & RS485 Ports.
 
-![Alt text](<5.5KW inverter.png>)
+![5.5KW inverter](<5.5KW inverter.png>)
 
 You should use these pins and coloured cables
 
