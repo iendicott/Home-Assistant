@@ -91,6 +91,11 @@ Once install you will then need to Edit the ESP device in ESP home and then past
 
 You will need to replace add **!secret** into your Home Assistant config for the code to work.
 
+## Changing the invert settings
+
+You will need to adjust your inverter to match the photo. 
+Your inverter will need to be rebooted as it will drop into error mode. Once done your inverter will be back to normal.
+
 ![Inverter Settings](<Inverter Settings.png>)
 
 ## Connection
