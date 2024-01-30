@@ -26,7 +26,7 @@ I also created a 3D printed box which can be downloaded from here https://www.th
 
 ## Connections.
 
-![Wiring](Wiring.png)
+![Wiring.png](Wiring.png)
 
 ## 5.5kW & 8.5kW with combind BMS 2in1 Port.
 
@@ -65,7 +65,11 @@ Pin7 = Brown/White = (B)
 
 You should in this case use these pins and coloured cables
 
-![Alt text](alternative.jpg)
+## Alternative Connections.
+
+![Alternative RJ45](alternative.jpg)
+
+![Alternative wiring](<Alternative wiring.png>)
 
 ## Inverter Settings.
 
