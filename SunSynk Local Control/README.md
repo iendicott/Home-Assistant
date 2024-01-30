@@ -6,9 +6,10 @@ This project has been created to allow you to gain back control over your SunSyn
 
 ![8.8kW inverter](<8.8kW inverter.png>)
 
-and some have seperate CAN and RS485 ports like this picture of a 5.5kW SunSynk Inverter
+**and some have seperate CAN and RS485 ports like this picture of a 5.5kW SunSynk Inverter**
 
 ![5.5KW inverter](<5.5KW inverter.png>)
+
 
 
 ## Components required
