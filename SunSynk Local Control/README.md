@@ -41,7 +41,7 @@ You should in this case use these pins and coloured cables
 ![Alt text](standard.jpg)
 
 If you have the battery and RS485 linking to the same port you maye need to provide a splitter.
-## Not all splitter are equal. 
+## Not all splitters are equal. 
 
 In this version you can see it's crossed over, this will NOT work.
 
