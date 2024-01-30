@@ -17,11 +17,15 @@ This project has been created to allow you to gain back control over your SunSyn
 
 ## Components required
 
+<br>
+
 WEMOS ESP32 Lite V1.0.0 Lolin32 Wifi Bluetooth Board CH340G MicroPython.
 
 ![ESP32 Lite](ESPLite.png)
 
 https://kunkune.co.uk/shop/esp32-esp8266/wemos-lolin32-esp32-lite-v1-0-0-wifi-bluetooth-board-ch340g-micropython/?fbclid=IwAR130c3W75-MvHVIQRkaq919oVmQM71DfNW_I4CI16sr6qBjoB76vTmjVCs
+
+<br>
 
 RS485 module to TTL with Isolation Single Chip Microcontroller UART Serial Port.
 
@@ -29,12 +33,13 @@ RS485 module to TTL with Isolation Single Chip Microcontroller UART Serial Port.
 
 https://kunkune.co.uk/shop/communication-boards/rs485-module-to-ttl-with-isolation-single-chip-microcontroller-uart-serial-port/?fbclid=IwAR0-Ap4bn00M6TSlwINBr1PfITM7QJWwbq9NOitrLwNkRpegcCKPePa97Lg
 
-USB power supply and suitable enclosure.
+A suitable USB power supply and enclosure.
 
 I also created a 3D printed box which can be downloaded from here https://www.thingiverse.com/thing:6456451
 
-![Alt text](<Screenshot 2024-01-28 133913.png>)
+![](<ESP 3D box.png>)
 
+<br>
 
 ## For the SunSynk Inverters with an all in one BMS 485/CAN port
 
@@ -54,6 +59,8 @@ Luckily the ESP use pins 1 & 2 and the BMS uses pins 4 & 5.
 
 ![Alt text](<Pin Outs Combined.png>)
 
+<br>
+
 ## *Not all splitters are equal. 
 
 In this version you can see it's crossed over, this will NOT work.
@@ -64,7 +71,7 @@ You will need one like this https://solar-assistant.io/shop/products/deye_rj45_s
 
 ![Good Splitter](<Good Splitter.png>)
 
-
+<br>
 
 ## For the SunSynk Inverters with Separate CAN & RS485 Ports.
 
@@ -78,8 +85,7 @@ They should be wired like this
 
 ![Alternative Wiring](<Alternative Wiring.png>)
 
-
-
+<br>
 
 ## Inverter Settings (This covers both types of inverter)
 
@@ -88,7 +94,7 @@ Your inverter will need to be rebooted as it will drop into error mode. Once don
 
 ![inverter Settings](<Inverter Settings.png>)
 
-
+<br>
 
 ## Flashing the ESP with the Code
 
@@ -108,10 +114,14 @@ Once install you will then need to Edit the ESP device in ESP home and then past
 
 You will need to replace add **!secret** into your Home Assistant config for the code to work.
 
+<br>
+
 ## Connection
 
 Now plug the device via the RJ45 into the inverter and you should see data being displayed. 
 You will also have alot of new sensors in Home Assistant with the Prefix **sunsynk logger**
+
+<br>
 
 ## Home Assistant Sensors.
 
@@ -134,6 +144,8 @@ You will also have alot of new sensors in Home Assistant with the Prefix **sunsy
 
 Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to your ESP device 
 https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/ESP%20Inverter.yaml
+
+<br>
 
 ## Disclaimer.
 
