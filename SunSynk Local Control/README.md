@@ -70,8 +70,7 @@ You should in this case use these pins and coloured cables
 ## Inverter Settings.
 
 Under the Advance Tab ensure the following settings are set.
-
-![Inverter Settings](<Inverter Settings.png>)
+Your inverter will need to be rebooted as it will drop into error mode. Once done your inverter will be back to normal.
 
 ## Flashing the ESP with the Code
 
@@ -90,13 +89,6 @@ You will then be prompted to install the ESP device. Following this through.
 Once install you will then need to Edit the ESP device in ESP home and then paste in the code https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/ESP%20Inverter.yaml
 
 You will need to replace add **!secret** into your Home Assistant config for the code to work.
-
-## Changing the invert settings
-
-You will need to adjust your inverter to match the photo. 
-Your inverter will need to be rebooted as it will drop into error mode. Once done your inverter will be back to normal.
-
-![Inverter Settings](<Inverter Settings.png>)
 
 ## Connection
 
