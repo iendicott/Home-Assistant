@@ -74,7 +74,7 @@ You will need one like this https://solar-assistant.io/shop/products/deye_rj45_s
 
 <br>
 
-## For the SunSynk Inverters with Separate CAN & RS485 Ports.
+## For the SunSynk Inverters with separate CAN & RS485 Ports.
 <br>
 
 ![5.5KW inverter](<5.5KW inverter.png>)
