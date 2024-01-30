@@ -72,6 +72,8 @@ You should in this case use these pins and coloured cables
 Under the Advance Tab ensure the following settings are set.
 Your inverter will need to be rebooted as it will drop into error mode. Once done your inverter will be back to normal.
 
+![inverter Settings](<Inverter Settings.png>)
+
 ## Flashing the ESP with the Code
 
 Load up the ESPHome Add-ons in Home Assistant.
