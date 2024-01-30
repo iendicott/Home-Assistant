@@ -89,7 +89,7 @@ They should be wired like this
 
 <br>
 
-## Inverter Settings (This covers both types of inverter)
+## Inverter Settings
 
 Under the Advance Tab ensure the following settings are set.
 Your inverter will need to be rebooted as it will drop into error mode. Once done your inverter will be back to normal.
@@ -104,7 +104,7 @@ Load up the ESPHome Add-ons in Home Assistant.
 
 ![Home Assistant ESPHome](ESPHome-HA.png)
 
-Click on the ESPHome item in the Home Assistant Side Bar
+Click on the **ESPHome** in the Home Assistant Side Bar
 Now click on **+ New Device**
 Click **Open ESPHome Web**
 Now plug your ESP device into your PC with a Data Micro USB cable then click **Connect**
