@@ -94,7 +94,7 @@ They should be wired like this
 Under the Advance Tab ensure the following settings are set.
 Your inverter will need to be rebooted as it will drop into error mode. Once done your inverter will be back to normal.
 
-![inverter Settings](<Inverter Settings.png>)
+![Inverter Settings](<Inverter Settings.jpg>)
 
 <br>
 
@@ -128,7 +128,9 @@ You will also have alot of new sensors in Home Assistant with the Prefix **sunsy
 ## Home Assistant Sensors.
 
 ![alt text](1.png)
+<br>
 ![alt text](2.png)
+<br>
 ![alt text](3.png)
 
 Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to your ESP device 
