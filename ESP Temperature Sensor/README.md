@@ -98,13 +98,13 @@ sensor:
 
 ```
 
+I printed out this case which I found on Thingiverse https://www.thingiverse.com/thing:3195951
 
-I then printed out this rather good ESP32 holder from Thingiverse, this give you the ability to plug in a Micro USB connector and feed in the Magnetic Reed Switch wires.
+![ESP_Case](ESP_Case.png)
 
-![DHT22 Box Vented](<DHT22 3D.jpg>)
+And then paried it up with this DHT22 holder again which I found on Thingiverse https://www.thingiverse.com/thing:1520129
+
+![DHT22_Case1](DHT22_Case1.jpg)
+![DHT22_Case2](DHT22_Case2.jpg)
 
 Files here
-
-https://github.com/iendicott/Home-Assistant/blob/main/Temperature%20Sensor/dhtCaseTopSolderVented.stl
-
-https://github.com/iendicott/Home-Assistant/blob/main/Temperature%20Sensor/dhtcasebott.stl
