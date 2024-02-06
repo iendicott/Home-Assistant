@@ -6,7 +6,7 @@ This project has been created to allow you to gain back control over your SunSyn
 
 **It should be noted, there are different versions of the each inverter. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter**
 
-![8.8KW inverter](<8.8KW inverter.png>)
+
 
 **and some have seperate CAN and RS485 ports like this picture of a 5.5kW SunSynk Inverter**
 
