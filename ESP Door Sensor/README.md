@@ -112,14 +112,6 @@ Google TTS Node
 
 ![Google TTS Node](<Google TTS node.png>)
 
-I then printed out this rather good ESP32 holder from Thingiverse, this give you the ability to plug in a Micro USB connector and feed in the Magnetic Reed Switch wires.
+I then printed out this rather good ESP32 holder from Thingiverse, this give you the ability to plug in a Micro USB connector and feed in the Magnetic Reed Switch wires. https://www.thingiverse.com/thing:3195951
 
 ![Alt text](case_2-1.PNG)
-
-Files here
-
-https://github.com/iendicott/Home-Assistant/blob/main/Door%20Sensor/top.stl
-
-https://github.com/iendicott/Home-Assistant/blob/main/Door%20Sensor/pin.stl
-
-https://github.com/iendicott/Home-Assistant/blob/main/Door%20Sensor/bottom.stl
