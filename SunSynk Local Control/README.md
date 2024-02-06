@@ -134,7 +134,7 @@ You will also have alot of new sensors in Home Assistant with the Prefix **sunsy
 ![alt text](3.png)
 
 Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to your ESP device 
-https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/ESP%20Inverter.yaml
+https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/ESP%20Inverter.yaml
 
 <br>
 
