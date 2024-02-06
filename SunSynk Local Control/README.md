@@ -140,5 +140,5 @@ https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20ESP%20Code/ESP%2
 
 ## Disclaimer.
 
-I cannot accept any responsibility for any damage caused to your equipment. Please install at your own risk.
+I do not accept any responsibility for any damage caused to your equipment. Installation is at your own risk.
 
