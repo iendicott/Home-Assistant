@@ -94,6 +94,11 @@ binary_sensor:
   - delayed_on: 10ms
   disabled_by_default: false
 
+# Home Assistant Switch Entity allowing restart of ESP32
+switch:
+  - platform: restart
+    name: "Restart"
+
 ```
 
 You can then setup a simple node red flow to alert when the door is open or closed.

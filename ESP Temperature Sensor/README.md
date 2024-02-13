@@ -96,6 +96,10 @@ sensor:
       name: "Humidity"
     update_interval: 60s
 
+# Home Assistant Switch Entity allowing restart of ESP32
+switch:
+  - platform: restart
+    name: "Restart"
 ```
 
 I printed out this case which I found on Thingiverse https://www.thingiverse.com/thing:3195951

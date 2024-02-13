@@ -1037,6 +1037,9 @@ sensor:
 ################################################ WRITE SETTINGS ################################################
 
 switch:
+  - platform: restart                    # Home Assistant Switch Entity allowing restart of ESP32
+    name: "Restart"
+
   - platform: modbus_controller          # 247 Toggle Solar Sell
     use_write_multiple: true
     modbus_controller_id: sunsynk
