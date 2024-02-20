@@ -111,4 +111,6 @@ And then paried it up with this DHT22 holder again which I found on Thingiverse 
 ![DHT22_Case1](DHT22_Case1.jpg)
 ![DHT22_Case2](DHT22_Case2.jpg)
 
+![alt text](Sensors.png)
+
 There are versions where you can combine the DHT22 sensor and ESP32Dev board into one holder, however I found the ESP board gave off heat which skewed the temperature sensors accuracy.
