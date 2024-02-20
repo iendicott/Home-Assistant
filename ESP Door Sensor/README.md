@@ -119,4 +119,6 @@ Google TTS Node
 
 I then printed out this rather good ESP32 holder from Thingiverse, this give you the ability to plug in a Micro USB connector and feed in the Magnetic Reed Switch wires. https://www.thingiverse.com/thing:3195951
 
-![Alt text](case_2-1.PNG)
+![DHT22 Caset](case_2-1.PNG)
+
+![Home Assistant Sensors](Sensors.png)
