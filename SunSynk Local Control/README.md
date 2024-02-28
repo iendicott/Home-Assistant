@@ -44,7 +44,7 @@ I also created a 3D printed box which can be downloaded from here https://www.th
 ## For the SunSynk Inverters with an all in one BMS 485/CAN port
 <br>
 
-![8.8KW inverter](<8.8kW inverter.png>)
+![8.8KW inverter](<8.8KW inverter.png>)
 
 You should use these pins and coloured cables
 
