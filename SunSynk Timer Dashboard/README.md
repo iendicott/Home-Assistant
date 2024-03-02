@@ -3,7 +3,7 @@ A simple template to compliment the SunSyk ESP Code
 
 SunSynk Dashboard - Creates a SunSynk Logger System Timer dash to compliment the ESP logger
 
-![SunSynk System Timer](<SunSynk System Timer-1.png>)
+![alt text](<SunSynk System Timer.png>)
 
 ```
 type: vertical-stack
