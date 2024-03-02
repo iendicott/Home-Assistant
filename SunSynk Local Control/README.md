@@ -79,7 +79,11 @@ You will need one like this https://solar-assistant.io/shop/products/deye_rj45_s
 
 ![5.5KW inverter](<5.5KW inverter.png>)
 
-You should use these pins and coloured cables
+You can see with a torch behind th cicuit board the pinouts are different
+
+![alt text](<RS485 Pins.png>)
+
+So based on the above you should use these pins and coloured cables
 
 ![Seperate](Seperate.jpg)
 
