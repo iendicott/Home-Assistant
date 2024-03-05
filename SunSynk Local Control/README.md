@@ -146,3 +146,4 @@ https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/
 
 I do not accept any responsibility for any damage caused to your equipment. Installation is at your own risk.
 
+Big thanks to **https://github.com/tmh88** for the original code
