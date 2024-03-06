@@ -122,13 +122,14 @@ You will need to replace add **!secret** into your Home Assistant config for the
 
 <br>
 To sync the inverter to the Home Assistant time the code has already been added to the Inverter.yaml file you used earlier. This will sync the inverter time every 3600 seconds. 
-<br>You can provision a button to "Sync Now". To complete this in **Home Assistant \ Settings \ Device & Services \ Helpers**<br>
-<br>Click on **Create Helper**
-<br>Scroll down to **Toggle** click on this and then name it **Sync Inverter Time**<br>
+<br>You can provision a button to "Sync Now". To complete this in __Home Assistant \ Settings \ Device & Services \ Helpers__<br>
+<br>Click on Create Helper
+<br>Scroll down to Toggle click on this and then name it Sync Inverter Time<br>
 <br>
 This created a switch beween the Inverter \ ESP32 board and Home Assistant and sends the Home Assistant time to ModBus registers 22-24.<br>
 <br>Once you press this you will see in the ESP Logs something along the lines of, this way you know the sync is working
 <br>
+
 ```
 [17:33:30][D][homeassistant.binary_sensor:026]: 'input_boolean.sync_inverter_time': Got state ON
 [17:33:30][D][binary_sensor:036]: 'Sync Time': Sending state ON
