@@ -1,7 +1,7 @@
 # Substitutions
 substitutions:
 # Device Names
-  device_name: "sunsynk"
+  device_name: "sunsynk-logger"
   friendly_name: "SunSynk Logger"
   device_description: "Sunsynk RS485 Logger"
   settings_skipped_updates: "4"
@@ -12,6 +12,7 @@ substitutions:
 # Basic Config
 esphome:
   name: "${device_name}"
+  friendly_name: "${friendly_name}"
   comment: '${device_description}'
 
 esp32:
@@ -81,6 +82,35 @@ modbus_controller:
     command_throttle: "50ms"
 
 
+interval:
+  - interval: 3600s         #Set the interval to sync your inverter time with HA or comment out to disable
+    then:
+      - lambda: |-
+          esphome::modbus_controller::ModbusController *controller = id(sunsynk);
+          time_t now = ::time(nullptr);
+          struct tm *time_info = ::localtime(&now);
+          int seconds = time_info->tm_sec;
+          int minutes = time_info->tm_min;
+          int hour = time_info->tm_hour;
+          int day = time_info->tm_mday;
+          int month = time_info->tm_mon + 1;
+          int year = time_info->tm_year;
+          year = year + 1900;
+          int year1 = year - 2000;
+         
+          uint16_t reg22_value = (year1 << 8) | month;
+          uint16_t reg23_value = (day << 8) | hour;
+          uint16_t reg24_value = (minutes << 8) | seconds;
+         
+          if (year != 1970) {
+            std::vector<uint16_t> rtc_data = {reg22_value, reg23_value, reg24_value};
+            esphome::modbus_controller::ModbusCommandItem set_rtc_command =
+                esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 22, rtc_data.size(), rtc_data);
+            controller->queue_command(set_rtc_command);
+            ESP_LOGI("Time Sync", "Seconds: %d, Minutes: %d, Hour: %d, Day: %d, Month: %d, Year: %d", seconds, minutes, hour, day, month, year);
+          }
+
+
 ############################################### BINARY SENSORS ###############################################
 
 binary_sensor:           
@@ -98,6 +128,37 @@ binary_sensor:
     register_type: holding
     address: 280
     bitmask: 0x100
+
+  - platform: homeassistant               # 22 - 24 Sync Inverter Time
+    entity_id: input_boolean.sync_inverter_time
+    name: "Sync Time"
+    id: sync_time
+    on_press:
+      then:
+        - lambda: |-
+            esphome::modbus_controller::ModbusController *controller = id(sunsynk);
+            time_t now = ::time(nullptr);
+            struct tm *time_info = ::localtime(&now);
+            int seconds = time_info->tm_sec;
+            int minutes = time_info->tm_min;
+            int hour = time_info->tm_hour;
+            int day = time_info->tm_mday;
+            int month = time_info->tm_mon + 1;
+            int year = time_info->tm_year;
+            year = year + 1900;
+            int year1 = year - 2000;
+            
+            uint16_t reg22_value = (year1 << 8) | month;
+            uint16_t reg23_value = (day << 8) | hour;
+            uint16_t reg24_value = (minutes << 8) | seconds;
+            
+            if (year != 1970) {
+              std::vector<uint16_t> rtc_data = {reg22_value, reg23_value, reg24_value};
+              esphome::modbus_controller::ModbusCommandItem set_rtc_command =
+                  esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 22, rtc_data.size(), rtc_data);
+              controller->queue_command(set_rtc_command);
+              ESP_LOGI("Time Sync", "Seconds: %d, Minutes: %d, Hour: %d, Day: %d, Month: %d, Year: %d", seconds, minutes, hour, day, month, year);
+            }
 
 ############################################### SENSORS ###############################################
 sensor:
@@ -158,6 +219,38 @@ sensor:
     filters:
       - offset: -1000
       - multiply:  0.1
+
+
+##########
+# Date and time registers
+##########
+
+#  - platform: modbus_controller            # 022 Year Month
+#    modbus_controller_id: sunsynk
+#    name: "${friendly_name} System Time Year Month"
+#    id: sunsynk_system_time_year_month
+#    register_type: holding
+#    skip_updates: ${settings_skipped_updates}
+#    address: 22
+#    entity_category: diagnostic
+#
+#  - platform: modbus_controller            # 023 Day Hour
+#    modbus_controller_id: sunsynk
+#    name: "${friendly_name} System Time Day Hour"
+#    id: sunsynk_system_time_day_hour
+#    register_type: holding
+#    skip_updates: ${settings_skipped_updates}
+#    address: 23
+#    entity_category: diagnostic
+#
+#  - platform: modbus_controller            # 024 Minute Second
+#    modbus_controller_id: sunsynk
+#    name: "${friendly_name} System Time Minute Second"
+#    id: sunsynk_system_time_minute_second
+#    register_type: holding
+#    skip_updates: ${settings_skipped_updates}
+#    address: 24
+#    value_type: U_WORD
 
 ##########
 # Battery
@@ -1037,7 +1130,7 @@ sensor:
 ################################################ WRITE SETTINGS ################################################
 
 switch:
-  - platform: restart                    # Home Assistant Switch Entity allowing restart of ESP32
+  - platform: restart                    # Button to restart the ESP32
     name: "Restart"
 
   - platform: modbus_controller          # 247 Toggle Solar Sell
@@ -1481,6 +1574,7 @@ text_sensor:
         char formatted_time[6];
         snprintf(formatted_time, sizeof(formatted_time), "%02d:%02d", hours, minutes);
         return esphome::optional<std::string>(formatted_time);
+
 
 
 
