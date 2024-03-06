@@ -120,9 +120,8 @@ Once install you will then need to Edit the ESP device in ESP home and then past
 
 You will need to replace add **!secret** into your Home Assistant config for the code to work.
 
-<br>
 To sync the inverter to the Home Assistant time the code has already been added to the Inverter.yaml file you used earlier. This will sync the inverter time every 3600 seconds. 
-You can provision a button to "Sync Now". To complete this in **Home Assistant** \\ Settings \\ Device & Services \\ Helpers
+You can provision a button to "Sync Now". To complete this in Home Assistant \ Settings \ Device & Services \ Helpers
 
 Click on **Create Helper**
 
