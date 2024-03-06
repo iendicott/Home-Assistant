@@ -142,17 +142,78 @@ https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/
 
 ## To sync the inverter to the Home Assistant time
 
-Firstly tuen off the automatic **Time Syncs** on your inverter, this can be completed on the inverter or through the online portal (shown below).
+Firstly turn off the automatic **Time Syncs** on your inverter, this can be completed on the inverter or through the online portal (shown below).
 
 ![Time Sync](<Time Sync HA.png>)
 
-The code has already been added to the **Inverter.yaml** file you used earlier starting with 
+The code has already been added to the **Inverter.yaml** file you used earlier starting with, if not the code is below, you must updated the **inverter_id** with your inverter ID, this can be found from this code
+
+```
+modbus_controller:
+  - id: sunsynk
+```
 
 ```
 interval:
   - interval: 3600s         #Set the interval to sync your inverter time with HA or comment out to disable
     then:
       - lambda: |-
+          esphome::modbus_controller::ModbusController *controller = id(**inverter_id**);
+          time_t now = ::time(nullptr);
+          struct tm *time_info = ::localtime(&now);
+          int seconds = time_info->tm_sec;
+          int minutes = time_info->tm_min;
+          int hour = time_info->tm_hour;
+          int day = time_info->tm_mday;
+          int month = time_info->tm_mon + 1;
+          int year = time_info->tm_year;
+          year = year + 1900;
+          int year1 = year - 2000;
+         
+          uint16_t reg22_value = (year1 << 8) | month;
+          uint16_t reg23_value = (day << 8) | hour;
+          uint16_t reg24_value = (minutes << 8) | seconds;
+         
+          if (year != 1970) {
+            std::vector<uint16_t> rtc_data = {reg22_value, reg23_value, reg24_value};
+            esphome::modbus_controller::ModbusCommandItem set_rtc_command =
+                esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 22, rtc_data.size(), rtc_data);
+            controller->queue_command(set_rtc_command);
+            ESP_LOGI("Time Sync", "Seconds: %d, Minutes: %d, Hour: %d, Day: %d, Month: %d, Year: %d", seconds, minutes, hour, day, month, year);
+          }
+
+
+binary_sensor:   
+  - platform: homeassistant               # 22 - 24 Sync Inverter Time
+    entity_id: input_boolean.sync_inverter_time
+    name: "Sync Time"
+    id: sync_time
+    on_press:
+      then:
+        - lambda: |-
+            esphome::modbus_controller::ModbusController *controller = id(*inverter_id**);
+            time_t now = ::time(nullptr);
+            struct tm *time_info = ::localtime(&now);
+            int seconds = time_info->tm_sec;
+            int minutes = time_info->tm_min;
+            int hour = time_info->tm_hour;
+            int day = time_info->tm_mday;
+            int month = time_info->tm_mon + 1;
+            int year = time_info->tm_year;
+            year = year + 1900;
+            int year1 = year - 2000;
+            
+            uint16_t reg22_value = (year1 << 8) | month;
+            uint16_t reg23_value = (day << 8) | hour;
+            uint16_t reg24_value = (minutes << 8) | seconds;
+            
+            if (year != 1970) {
+              std::vector<uint16_t> rtc_data = {reg22_value, reg23_value, reg24_value};
+              esphome::modbus_controller::ModbusCommandItem set_rtc_command =
+                  esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 22, rtc_data.size(), rtc_data);
+              controller->queue_command(set_rtc_command);
+              ESP_LOGI("Time Sync", "Seconds: %d, Minutes: %d, Hour: %d, Day: %d, Month: %d, Year: %d", seconds, minutes, hour, day, month, year);
+            }
 ```
 
 This will sync the inverter time every 3600 seconds. 
