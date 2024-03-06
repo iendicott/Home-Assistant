@@ -143,11 +143,10 @@ This created a switch beween the Inverter \ ESP32 board and Home Assistant and s
 Once you press this you will see in the ESP Logs something along the lines of, this way you know the sync is working
 
 
-```
-[17:33:30][D][homeassistant.binary_sensor:026]: 'input_boolean.sync_inverter_time': Got state ON
+
+*[17:33:30][D][homeassistant.binary_sensor:026]: 'input_boolean.sync_inverter_time': Got state ON
 [17:33:30][D][binary_sensor:036]: 'Sync Time': Sending state ON
-[17:33:30][I][Time Sync:160]: Seconds: 30, Minutes: 33, Hour: 17, Day: 6, Month: 3, Year: 2024
-```
+[17:33:30][I][Time Sync:160]: Seconds: 30, Minutes: 33, Hour: 17, Day: 6, Month: 3, Year: 2024*
 
 <br>
 
