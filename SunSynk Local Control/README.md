@@ -156,7 +156,7 @@ You can provision a button to "Sync Now". To complete this in **Home Assistant \
 
 Click on **Create Helper**
 
-Scroll down to **Toggle** click on this and then name it Sync Inverter Time
+Scroll down to **Toggle** click on this and then name it **Sync Inverter Time**
 
 This created a switch beween the Inverter \ ESP32 board and Home Assistant and sends the Home Assistant time to ModBus registers 22-24.
 
