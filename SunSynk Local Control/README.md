@@ -156,11 +156,12 @@ Firstly turn off the automatic **Time Syncs** on your inverter, this can be comp
 
 ![Time Sync](<Time Sync HA.png>)
 
-The code has already been added to the **Inverter.yaml** file you used earlier starting with, if not the code is below.
+The code has already been added to the **Inverter.yaml** file you uploaded earlier
 
+You must updated the **inverter_id** with your inverter IDif you are not using my code as this maybe different. 
+If you have used the **Inverter.yaml** file from this repo you won't need to change anything and it should just work.
 
-You must updated the **inverter_id** with your inverter ID, this can be found from this code
-
+Here is where you can find the inverter ID, this is listed in the **yaml** file you used to flash teh ESP board with.
 ```
 modbus_controller:
   - id: sunsynk
