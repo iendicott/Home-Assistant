@@ -5,7 +5,7 @@ The Sunsynk inverter generally comes with a dongle that is connected to the seri
 This dongle connects to Wifi and sends data to SunSynk Cloud which can be it's achilies heel. If the SunSynk cloud is down you will loose the ability to remotely set / view settings on the inverter also it's been known for the time on the inverter to drift ausing issues with smart tarrifs that rely on time windows (Octopus Go \ Octopus Intelligent etc.).<br>
 This project gives the user the ability to control the inverter from inside Home Assistant. This applies to 3.68kW / 5.5kW and 8.8kW inverters. (Other models may work)<br>
 
-**It should be noted, there are different versions of the inverters. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter**
+**It should be noted, there are different versions of inverters. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter**
 
 ![8.8KW inverter](<8.8KW inverter.png>)
 
@@ -18,7 +18,7 @@ This project gives the user the ability to control the inverter from inside Home
 Pre-reqs for this project are the following:
 
 * Home Assistant has been setup and you are confortable with adding new sensors and plugins.
-* Access to a solidering kit as you will be using this to wire the board.
+* Access to a solidering kit as you will be using this to wire the various boards together.
 * Access to a 3D printer to print out the enclosures, this is not strictly required but a nice to have.
 
 ## Components required
@@ -147,9 +147,6 @@ You will also have alot of new sensors in Home Assistant with the Prefix **sunsy
 ![alt text](2.png)
 <br>
 ![alt text](3.png)
-
-Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to your ESP device 
-https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/ESP%20Inverter.yaml
 
 <br>
 
