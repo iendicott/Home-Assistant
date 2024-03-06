@@ -158,7 +158,9 @@ modbus_controller:
 
 So where it specifies **inverter_id** in the code below, select this and replace this with the value you get above, for example 
 
-**esphome::modbus_controller::ModbusController *controller = id(sunsynk)**
+```
+esphome::modbus_controller::ModbusController *controller = id(sunsynk)
+```
 
 ```
 interval:
