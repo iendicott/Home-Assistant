@@ -120,6 +120,26 @@ Once install you will then need to Edit the ESP device in ESP home and then past
 
 You will need to replace add **!secret** into your Home Assistant config for the code to work.
 
+## Connection
+
+Now plug the device via the RJ45 into the inverter and you should see data being displayed. 
+You will also have alot of new sensors in Home Assistant with the Prefix **sunsynk logger**
+
+<br>
+
+## Home Assistant Sensors.
+
+![alt text](1.png)
+<br>
+![alt text](2.png)
+<br>
+![alt text](3.png)
+
+Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to your ESP device 
+https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/ESP%20Inverter.yaml
+
+<br>
+
 ## To sync the inverter to the Home Assistant time
 
 The code has already been added to the **Inverter.yaml** file you used earlier starting with 
@@ -147,26 +167,6 @@ Once you press this you will see in the ESP Logs something along the lines of, t
 *[17:33:30][D][homeassistant.binary_sensor:026]: 'input_boolean.sync_inverter_time': Got state ON
 [17:33:30][D][binary_sensor:036]: 'Sync Time': Sending state ON
 [17:33:30][I][Time Sync:160]: Seconds: 30, Minutes: 33, Hour: 17, Day: 6, Month: 3, Year: 2024*
-
-<br>
-
-## Connection
-
-Now plug the device via the RJ45 into the inverter and you should see data being displayed. 
-You will also have alot of new sensors in Home Assistant with the Prefix **sunsynk logger**
-
-<br>
-
-## Home Assistant Sensors.
-
-![alt text](1.png)
-<br>
-![alt text](2.png)
-<br>
-![alt text](3.png)
-
-Once you have built the product you'll need to install ESP Home on your Home Assistant console and then upload this to your ESP device 
-https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/ESP%20Inverter.yaml
 
 <br>
 
