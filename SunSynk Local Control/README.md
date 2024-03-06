@@ -161,7 +161,7 @@ The code has already been added to the **Inverter.yaml** file you uploaded earli
 You must updated the **inverter_id** with your inverter IDif you are not using my code as this maybe different. 
 If you have used the **Inverter.yaml** file from this repo you won't need to change anything and it should just work.
 
-Here is where you can find the inverter ID, this is listed in the **yaml** file you used to flash teh ESP board with.
+Here is where you can find the inverter ID, this is listed in the **yaml** file you used to flash the ESP board with.
 ```
 modbus_controller:
   - id: sunsynk
