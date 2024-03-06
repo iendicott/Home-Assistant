@@ -152,9 +152,10 @@ The code has already been added to the **Inverter.yaml** file you used earlier s
 You must updated the **inverter_id** with your inverter ID, this can be found from this code
 
 <br>
-**modbus_controller:
-  - id: sunsynk**
-
+```
+modbus_controller:
+  - id: sunsynk
+```
 <br>
 
 
