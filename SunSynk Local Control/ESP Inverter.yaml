@@ -129,7 +129,7 @@ binary_sensor:
     address: 280
     bitmask: 0x100
 
-  - platform: homeassistant               # 22 - 24 Sync Inverter Time
+  - platform: homeassistant               # Adhoc Time Sync 22 - 24 Sync Inverter Time
     entity_id: input_boolean.sync_inverter_time
     name: "Sync Time"
     id: sync_time

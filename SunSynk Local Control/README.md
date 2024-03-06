@@ -146,12 +146,17 @@ Firstly turn off the automatic **Time Syncs** on your inverter, this can be comp
 
 ![Time Sync](<Time Sync HA.png>)
 
-The code has already been added to the **Inverter.yaml** file you used earlier starting with, if not the code is below, you must updated the **inverter_id** with your inverter ID, this can be found from this code
+The code has already been added to the **Inverter.yaml** file you used earlier starting with, if not the code is below.
 
-```
-modbus_controller:
-  - id: sunsynk
-```
+
+You must updated the **inverter_id** with your inverter ID, this can be found from this code
+
+<br>
+**modbus_controller:
+  - id: sunsynk**
+
+<br>
+
 
 ```
 interval:
@@ -184,7 +189,7 @@ interval:
 
 
 binary_sensor:   
-  - platform: homeassistant               # 22 - 24 Sync Inverter Time
+  - platform: homeassistant               # Adhoc Time Sync 22 - 24 Sync Inverter Time
     entity_id: input_boolean.sync_inverter_time
     name: "Sync Time"
     id: sync_time
