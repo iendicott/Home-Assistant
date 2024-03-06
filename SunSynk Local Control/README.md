@@ -156,13 +156,16 @@ modbus_controller:
   - id: sunsynk
 ```
 
+So where it specifies **inverter_id** in the code below, select this and replace this with the value you get above, for example 
+
+**esphome::modbus_controller::ModbusController *controller = id(sunsynk)**
 
 ```
 interval:
   - interval: 3600s         #Set the interval to sync your inverter time with HA or comment out to disable
     then:
       - lambda: |-
-          esphome::modbus_controller::ModbusController *controller = id(**inverter_id**);
+          esphome::modbus_controller::ModbusController *controller = id(inverter_id)
           time_t now = ::time(nullptr);
           struct tm *time_info = ::localtime(&now);
           int seconds = time_info->tm_sec;
@@ -195,7 +198,7 @@ binary_sensor:
     on_press:
       then:
         - lambda: |-
-            esphome::modbus_controller::ModbusController *controller = id(*inverter_id**);
+            esphome::modbus_controller::ModbusController *controller = id(inverter_id);
             time_t now = ::time(nullptr);
             struct tm *time_info = ::localtime(&now);
             int seconds = time_info->tm_sec;
