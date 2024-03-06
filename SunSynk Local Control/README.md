@@ -142,6 +142,10 @@ https://github.com/iendicott/Home-Assistant/blob/main/SunSynk%20Local%20Control/
 
 ## To sync the inverter to the Home Assistant time
 
+First remove the autoamtic time syc off your inverter, this can be completed on the inverter or through the online portal.
+
+![Time Sync](<Time Sync HA.png>)
+
 The code has already been added to the **Inverter.yaml** file you used earlier starting with 
 
 ```
