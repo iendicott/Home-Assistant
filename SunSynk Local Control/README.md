@@ -1,10 +1,9 @@
 # SunSynk Inverters and Home Assistant ESPHome
 
-This project has been created to allow you to take local control over your SunSynk Inverter. 
-The Sunsynk inverter generally comes with a dongle that is connected to the serial port on the bottom of the inverter. 
-This dongle connects to Wifi and sends data to SunSynk Cloud which can be it's achilies heel. If the SunSynk cloud is down you loose the ability to remote set or view settings on the inverter also it's been known for the time on the incerter to drift.
-This project gives the user the ability to control the inverter from Home Assistant. This applies to 3.68kW / 5.5kW and 8.8kW inverters. (Other models may work)
-<br>
+This project has been created to allow you to take local control over your SunSynk Inverter. It will give you the ability not only to read the inverter data but set it from within Home Assistant. <br>
+The Sunsynk inverter generally comes with a dongle that is connected to the serial port on the bottom of the inverter.<br> 
+This dongle connects to Wifi and sends data to SunSynk Cloud which can be it's achilies heel. If the SunSynk cloud is down you will loose the ability to remotely set / view settings on the inverter also it's been known for the time on the inverter to drift ausing issues with smart tarrifs that rely on time windows (Octopus Go \ Octopus Intelligent etc.).<br>
+This project gives the user the ability to control the inverter from inside Home Assistant. This applies to 3.68kW / 5.5kW and 8.8kW inverters. (Other models may work)<br>
 
 **It should be noted, there are different versions of the inverters. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter**
 
