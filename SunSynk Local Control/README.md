@@ -1,19 +1,26 @@
 # SunSynk Inverters and Home Assistant ESPHome
 
-This project has been created to allow you to gain back control over your SunSynk Inverter. This applies to 3.68kW / 5.5kW and 8.8kW inverters. (Other models may work)
-
+This project has been created to allow you to take local control over your SunSynk Inverter. 
+The Sunsynk inverter generally comes with a dongle that is connected to the serial port on the bottom of the inverter. 
+This dongle connects to Wifi and sends data to SunSynk Cloud which can be it's achilies heel. If the SunSynk cloud is down you loose the ability to remote set or view settings on the inverter also it's been known for the time on the incerter to drift.
+This project gives the user the ability to control the inverter from Home Assistant. This applies to 3.68kW / 5.5kW and 8.8kW inverters. (Other models may work)
 <br>
 
-**It should be noted, there are different versions of the each inverter. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter**
+**It should be noted, there are different versions of the inverters. Some have an all in one BMS 485/CAN port like a picture of this 8.8kW SunSynk Inverter**
 
 ![8.8KW inverter](<8.8KW inverter.png>)
 
-**and some have seperate CAN and RS485 ports like this picture of a 5.5kW SunSynk Inverter**
+**Some have seperate CAN and RS485 ports like this picture of a 5.5kW SunSynk Inverter**
 
 ![5.5KW inverter](<5.5KW inverter.png>)
 
 <br>
-<br>
+
+Pre-reqs for this project are the following:
+
+* Home Assistant has been setup and you are confortable with adding new sensors and plugins.
+* Access to a solidering kit as you will be using this to wire the board.
+* Access to a 3D printer to print out the enclosures, this is not strictly required but a nice to have.
 
 ## Components required
 
@@ -32,6 +39,10 @@ RS485 module to TTL with Isolation Single Chip Microcontroller UART Serial Port.
 ![RS483 to TTL](<RS485 to TTL.png>)
 
 https://kunkune.co.uk/shop/communication-boards/rs485-module-to-ttl-with-isolation-single-chip-microcontroller-uart-serial-port/?fbclid=IwAR0-Ap4bn00M6TSlwINBr1PfITM7QJWwbq9NOitrLwNkRpegcCKPePa97Lg
+
+A network lead that with RJ45 connectors, various lengths available and these are generally cheap, typically around £5 or less.
+
+![Network Lead](<RJ45 Lead.png>)
 
 A suitable USB power supply and enclosure.
 
@@ -122,7 +133,10 @@ You will need to replace add **!secret** into your Home Assistant config for the
 
 ## Connection
 
-Now plug the device via the RJ45 into the inverter and you should see data being displayed. 
+Now plug the device via the RJ45 into the inverter and you should see data being displayed, there will also be 2 LEDs on the RS485 to TTL that flash to show communication to the inverter.
+
+![LED location](<RS485 to TTL LEDs.png>)
+
 You will also have alot of new sensors in Home Assistant with the Prefix **sunsynk logger**
 
 <br>
