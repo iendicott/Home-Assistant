@@ -89,7 +89,7 @@ You will need one like this https://solar-assistant.io/shop/products/deye_rj45_s
 
 ![5.5KW inverter](<5.5KW inverter.png>)
 
-You can see with a torch behind th cicuit board the pinouts are different
+You can see with a torch behind the cicuit board the pinouts are different
 
 ![alt text](<RS485 Pins.png>)
 
