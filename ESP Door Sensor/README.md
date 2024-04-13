@@ -50,11 +50,13 @@ api:
   encryption:
     key: !secret doorsensor_api_encryption_key
 
+# OTA Updates Password 
 ota:
+  password: !secret doorsensor_ota_password
 
 wifi:
-  ssid: !secret doorsensor_wifi_ssid
-  password: !secret doorsensor_web_server_password
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -64,8 +66,8 @@ wifi:
 web_server:
   port: 80
   auth:
-    username: !secret garage_web_server_username
-    password: !secret garage_web_server_password
+    username: !secret doorsensor_web_server_username
+    password: !secret doorsensor_web_server_password
   ota: true
 
 # Enable logging
@@ -91,14 +93,19 @@ binary_sensor:
   name: Garage Entry Door
   device_class: door
   filters:
-  - delayed_on: 10ms
+  - delayed_on: 1000ms
   disabled_by_default: false
 
-# Home Assistant Switch Entity allowing restart of ESP32
+sensor:
+  - platform: wifi_signal           
+    name: "${friendly_name} WiFi Status"
+    update_interval: 60s
+    entity_category: diagnostic
+
+# Enable restart of ESP32
 switch:
   - platform: restart
     name: "Restart"
-
 ```
 
 You can then setup a simple node red flow to alert when the door is open or closed.

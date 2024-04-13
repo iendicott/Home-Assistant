@@ -41,6 +41,7 @@ Then in Home Assistant you will need to add the following code:
 ## Make sure you update any secret references with your own parameters otherwise the code will not work!
 
 ```
+
 substitutions:
   device_name: "garage_sensor"
   friendly_name: "Garage Sensor"
@@ -76,8 +77,8 @@ web_server:
   ota: true
 
 wifi:
-  ssid: !secret garage_wifi_ssid
-  password: !secret garage_wifi_password
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -89,14 +90,19 @@ captive_portal:
 sensor:
   - platform: dht
     model: DHT22
-    pin: GPIO4
+    pin: GPIO23
     temperature:
       name: "Temperature"
     humidity:
       name: "Humidity"
-    update_interval: 60s
+    update_interval: 30s
 
-# Home Assistant Switch Entity allowing restart of ESP32
+  - platform: wifi_signal           
+    name: "${friendly_name} WiFi Status"
+    update_interval: 60s
+    entity_category: diagnostic
+  
+# Enable restart of ESP32
 switch:
   - platform: restart
     name: "Restart"
