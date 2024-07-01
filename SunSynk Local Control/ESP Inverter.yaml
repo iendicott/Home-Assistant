@@ -32,6 +32,7 @@ api:
 # OTA Updates Password 
 ota:
   password: !secret sunsynk_ota_password
+  platform: esphome
 
 # Enable Webserver
 web_server:
