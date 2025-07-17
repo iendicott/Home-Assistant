@@ -31,8 +31,8 @@ api:
  
 # OTA Updates Password 
 ota:
-  password: !secret sunsynk_ota_password
-  platform: esphome
+  - platform: esphome
+    password: !secret sunsynk_ota_password
 
 # Enable Webserver
 web_server:
@@ -40,7 +40,6 @@ web_server:
   auth:
     username: !secret web_server_username
     password: !secret web_server_password
-  ota: true
 
 # Wifi Setup
 wifi:
