@@ -68,13 +68,18 @@ api:
 
 # OTA Updates Password 
 ota:
+  - platform: esphome
+    password: !secret garage_sensor_ota_password
+  
+  
 
 web_server:
   port: 80
   auth:
     username: !secret garage_web_server_username
     password: !secret garage_web_server_password
-  ota: true
+
+
 
 wifi:
   ssid: !secret wifi_ssid
