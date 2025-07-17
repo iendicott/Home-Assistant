@@ -52,7 +52,9 @@ api:
 
 # OTA Updates Password 
 ota:
-  password: !secret doorsensor_ota_password
+  - platform: esphome
+    password: !secret doorsensor_ota_password
+  
 
 wifi:
   ssid: !secret wifi_ssid
@@ -68,7 +70,6 @@ web_server:
   auth:
     username: !secret doorsensor_web_server_username
     password: !secret doorsensor_web_server_password
-  ota: true
 
 # Enable logging
 logger:
