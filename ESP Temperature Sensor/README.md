@@ -43,7 +43,7 @@ Then in Home Assistant you will need to add the following code:
 ```
 
 substitutions:
-  device_name: "garage_sensor"
+  device_name: "garage-sensor"
   friendly_name: "Garage Sensor"
   device_description: "Logs humidty and temperature in the garage"
   settings_skipped_updates: "4"
