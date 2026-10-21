@@ -4,7 +4,6 @@ substitutions:
   device_name: "sunsynk-logger"
   friendly_name: "SunSynk Logger"
   device_description: "Sunsynk RS485 Logger"
-  settings_skipped_updates: "4"
 
 # Icon
   main_icon: "solar-power"
@@ -74,41 +73,24 @@ modbus:
   id: sunsynk_modbus
  
 modbus_controller:
-  - id: sunsynk
+  - id: sunsynk                            # Main controller - live data, polled every 5s
     address: 0x01
     modbus_id: sunsynk_modbus
     setup_priority: -10
     update_interval: "5s"
     command_throttle: "50ms"
 
+  - id: sunsynk_slow                       # Slow controller - settings/firmware registers, polled every 25s
+    address: 0x01
+    modbus_id: sunsynk_modbus
+    setup_priority: -10
+    update_interval: "25s"
+    command_throttle: "50ms"
 
-#interval:
-#  - interval: 86400s         #Set the interval to sync your inverter time with HA or comment out to disable
-#    then:
-#      - lambda: |-
-#          esphome::modbus_controller::ModbusController *controller = id(sunsynk);
-#          time_t now = ::time(nullptr);
-#          struct tm *time_info = ::localtime(&now);
-#          int seconds = time_info->tm_sec;
-#          int minutes = time_info->tm_min;
-#          int hour = time_info->tm_hour;
-#          int day = time_info->tm_mday;
-#          int month = time_info->tm_mon + 1;
-#          int year = time_info->tm_year;
-#          year = year + 1900;
-#          int year1 = year - 2000;
-#         
-#          uint16_t reg22_value = (year1 << 8) | month;
-#          uint16_t reg23_value = (day << 8) | hour;
-#          uint16_t reg24_value = (minutes << 8) | seconds;
-#         
-#          if (year != 1970) {
-#            std::vector<uint16_t> rtc_data = {reg22_value, reg23_value, reg24_value};
-#            esphome::modbus_controller::ModbusCommandItem set_rtc_command =
-#                esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 22, rtc_data.size(), rtc_data);
-#            controller->queue_command(set_rtc_command);
-#            ESP_LOGI("Time Sync", "Seconds: %d, Minutes: %d, Hour: %d, Day: %d, Month: %d, Year: %d", seconds, minutes, hour, day, month, year);
-#          }
+# Used by the Sync Time button below to write the inverter clock (registers 22-24)
+modbus_client:
+  - id: sunsynk_rtc
+    address: 0x01
 
 
 ############################################### BINARY SENSORS ###############################################
@@ -136,7 +118,6 @@ binary_sensor:
     on_press:
       then:
         - lambda: |-
-            esphome::modbus_controller::ModbusController *controller = id(sunsynk);
             time_t now = ::time(nullptr);
             struct tm *time_info = ::localtime(&now);
             int seconds = time_info->tm_sec;
@@ -153,10 +134,8 @@ binary_sensor:
             uint16_t reg24_value = (minutes << 8) | seconds;
             
             if (year != 1970) {
-              std::vector<uint16_t> rtc_data = {reg22_value, reg23_value, reg24_value};
-              esphome::modbus_controller::ModbusCommandItem set_rtc_command =
-                  esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 22, rtc_data.size(), rtc_data);
-              controller->queue_command(set_rtc_command);
+              uint16_t rtc_data[] = {reg22_value, reg23_value, reg24_value};
+              id(sunsynk_rtc).write_multiple_registers(22, rtc_data);
               ESP_LOGI("Time Sync", "Seconds: %d, Minutes: %d, Hour: %d, Day: %d, Month: %d, Year: %d", seconds, minutes, hour, day, month, year);
             }
         - delay: 2s 
@@ -178,20 +157,18 @@ sensor:
     entity_category: diagnostic
 
   - platform: modbus_controller            # 013 Firmware Control Board
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Firmware Control Board"
     id: sunsynk_firmware_control_board
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 13
     entity_category: diagnostic
 
   - platform: modbus_controller            # 014 Firmware Comms Board
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Firmware Comms Board"
     id: sunsynk_firmware_comms_board
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 14
     entity_category: diagnostic
 
@@ -838,13 +815,13 @@ sensor:
 
 
 ################################################ READ SETTINGS ################################################
+# These are read by the slow controller (sunsynk_slow, every 25s)
 
   - platform: modbus_controller          # 250 Settings Timezone1
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Timezone1"
     id: sunsynk_setting_timezone1
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 250
     filters: #GOOD
       - lambda: |-
@@ -853,11 +830,10 @@ sensor:
     icon: "mdi:clock"
 
   - platform: modbus_controller          # 251 Settings Timezone2
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Timezone2"
     id: sunsynk_setting_timezone2
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 251   
     filters: #GOOD
       - lambda: |-
@@ -866,11 +842,10 @@ sensor:
     icon: "mdi:clock"
 
   - platform: modbus_controller          # 252 Settings Timezone3
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Timezone3"
     id: sunsynk_setting_timezone3
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 252
     filters: #GOOD
       - lambda: |-
@@ -879,20 +854,18 @@ sensor:
     icon: "mdi:clock"
 
   - platform: modbus_controller          # 253 Settings Timezone4
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Timezone4"
     id: sunsynk_setting_timezone4
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 253
     icon: "mdi:clock"
 
   - platform: modbus_controller          # 254 Settings Timezone5
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Timezone5"
     id: sunsynk_setting_timezone5
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 254
     filters: #GOOD
       - lambda: |-
@@ -901,11 +874,10 @@ sensor:
     icon: "mdi:clock"
 
   - platform: modbus_controller          # 255 Settings Timezone6
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Timezone6"
     id: sunsynk_setting_timezone6
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 255
     filters: #GOOD
       - lambda: |-
@@ -914,186 +886,168 @@ sensor:
     icon: "mdi:clock"
 
   - platform: modbus_controller          # 268 Settings SoC Timezone1
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting SoC Timezone1"
     id: sunsynk_setting_soc_timezone1
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 268
     unit_of_measurement: "%"
     value_type: U_WORD
     icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 269 Settings SoC Timezone2
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting SoC Timezone2"
     id: sunsynk_setting_soc_timezone2
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 269
     unit_of_measurement: "%"
     value_type: U_WORD
     icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 270 Settings SoC Timezone3
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting SoC Timezone3"
     id: sunsynk_setting_soc_timezone3
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 270
     unit_of_measurement: "%"
     value_type: U_WORD
     icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 271 Settings SoC Timezone4
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting SoC Timezone4"
     id: sunsynk_setting_soc_timezone4
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 271
     unit_of_measurement: "%"
     value_type: U_WORD
     icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 272 Settings SoC Timezone5
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting SoC Timezone5"
     id: sunsynk_setting_soc_timezone5
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 272
     unit_of_measurement: "%"
     value_type: U_WORD
     icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 273 Settings SoC Timezone6
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting SoC Timezone6"
     id: sunsynk_setting_soc_timezone6
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 273
     unit_of_measurement: "%"
     value_type: U_WORD
     icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 274 Settings Grid Charge Timezone1
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Grid Charge Timezone1"
     id: sunsynk_setting_grid_charge_timezone1
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 274
 
   - platform: modbus_controller          # 275 Settings Grid Charge Timezone2
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Grid Charge Timezone2"
     id: sunsynk_setting_grid_charge_timezone2
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 275
     
   - platform: modbus_controller          # 276 Settings Grid Charge Timezone3
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Grid Charge Timezone3"
     id: sunsynk_setting_grid_charge_timezone3
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 276
     
   - platform: modbus_controller          # 277 Settings Grid Charge Timezone4
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Grid Charge Timezone4"
     id: sunsynk_setting_grid_charge_timezone4
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 277
     
   - platform: modbus_controller          # 278 Settings Grid Charge Timezone5
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Grid Charge Timezone5"
     id: sunsynk_setting_grid_charge_timezone5
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 278
     
   - platform: modbus_controller          # 279 Settings Grid Charge Timezone6
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
 #    name: "${friendly_name} Setting Grid Charge Timezone6"
     id: sunsynk_setting_grid_charge_timezone6
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 279
 
   - platform: modbus_controller          # 256 # Settings Power Timezone1
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting Power Timezone1"
     id: sunsynk_setting_power_timezone1
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 256
     unit_of_measurement: "W"
     value_type: U_WORD
     icon: "mdi:flash"
     
   - platform: modbus_controller          # 257 # Settings Power Timezone2
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting Power Timezone2"
     id: sunsynk_setting_power_timezone2
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 257
     unit_of_measurement: "W"
     value_type: U_WORD
     icon: "mdi:flash"
     
   - platform: modbus_controller          # 258 # Settings Power Timezone3
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting Power Timezone3"
     id: sunsynk_setting_power_timezone3
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 258
     unit_of_measurement: "W"
     value_type: U_WORD
     icon: "mdi:flash"
     
   - platform: modbus_controller          # 259 # Settings Power Timezone4
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting Power Timezone4"
     id: sunsynk_setting_power_timezone4
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 259
     unit_of_measurement: "W"
     value_type: U_WORD
     icon: "mdi:flash"
     
   - platform: modbus_controller          # 260 # Settings Power Timezone5
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting Power Timezone5"
     id: sunsynk_setting_power_timezone5
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 260
     unit_of_measurement: "W"
     value_type: U_WORD
     icon: "mdi:flash"
     
   - platform: modbus_controller          # 261 # Settings Power Timezone6
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Setting Power Timezone6"
     id: sunsynk_setting_power_timezone6
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     address: 261
     unit_of_measurement: "W"
     value_type: U_WORD
     icon: "mdi:flash"
 
-  - platform: modbus_controller        # 255 Grid Peak Shaving RAW register value for SELECT SENSORS below
+  - platform: modbus_controller        # 280 Grid Peak Shaving RAW register value for SELECT SENSORS below
     modbus_controller_id: sunsynk
     id: grid_peak_shaving_raw
     register_type: holding
@@ -1402,11 +1356,10 @@ number:
 
 text_sensor:
   - platform: modbus_controller            # 059 Overall State
-    modbus_controller_id: sunsynk
+    modbus_controller_id: sunsynk_slow
     name: "${friendly_name} Overall State"
     id: sunsynk_overall_state
     register_type: holding
-    skip_updates: ${settings_skipped_updates}
     raw_encode: HEXBYTES
     address: 59
     lambda: |- 
