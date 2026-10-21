@@ -32,7 +32,7 @@ api:
 # OTA Updates Password 
 ota:
   - platform: esphome
-    password: !secret sunsynk_ota_password
+    encryption:
 
 # Enable Webserver
 web_server:
@@ -160,8 +160,8 @@ binary_sensor:
               ESP_LOGI("Time Sync", "Seconds: %d, Minutes: %d, Hour: %d, Day: %d, Month: %d, Year: %d", seconds, minutes, hour, day, month, year);
             }
         - delay: 2s 
-        - homeassistant.service:
-            service: input_boolean.turn_off
+        - homeassistant.action:
+            action: input_boolean.turn_off
             data:
               entity_id: input_boolean.sync_inverter_time
 
@@ -1397,6 +1397,7 @@ number:
     value_type: U_WORD
     entity_category: config
 
+
 ################################################ TEMPLATE SENSORS ################################################
 
 text_sensor:
@@ -1409,7 +1410,7 @@ text_sensor:
     raw_encode: HEXBYTES
     address: 59
     lambda: |- 
-      uint16_t value = modbus_controller::word_from_hex_str(x, 0);
+      uint16_t value = esphome::modbus::helpers::word_from_hex_str(x, 0);
       switch (value) {
         case 0: return std::string("standby");
         case 1: return std::string("selftest");
